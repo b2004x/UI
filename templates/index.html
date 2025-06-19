@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dự đoán Sales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+      select {
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+        background-color: #fff;
+        color: #333;
+        appearance: none; /* Removes default arrow styling */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'10'%20height%3D'6'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M0%200l5%206%205-6z'%20fill%3D'%234CAF50'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 10px 6px;
+        cursor: pointer;
+        transition: border-color 0.3s;
+        width: 100%;
+    }
+
+        select:focus {
+        border-color: #2E7D32;
+        outline: none;
+        box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Nhập dữ liệu để dự đoán Sales</h2>
+        <form method="POST">
+            <label>Ngày:</label>
+            <input type="text" name="date">
+
+            <label>Store Number:</label>
+            <input type="number" name="store_nbr">
+
+            <label>Family:</label>
+              <select name="Family" required>
+                <option value="PREPARED FOODS">PREPARED FOODS</option>
+                <option value="HOME AND KITCHEN II">HOME AND KITCHEN II</option>
+                <option value="LADIESWEAR">LADIESWEAR,</option>
+                <option value="LAWN AND GARDEN">LAWN AND GARDEN</option>
+                <option value="GROCERY I">GROCERY I</option>
+                <option value="BABY CARE">BABY CARE,</option>
+                <option value="PRODUCE">PRODUCE</option>
+                <option value="AUTOMOTIVE">AUTOMOTIVE</option>
+                <option value="HOME CARE">HOME CARE,</option>
+                <option value="BEVERAGES">BEVERAGES</option>
+                <option value="BREAD/BAKERY">BREAD/BAKERY</option>
+                <option value="BOOKS">BOOKS</option>
+                <option value="LINGERIE">LINGERIE</option>
+                <option value="GROCERY II">GROCERY II</option>
+                <option value="MAGAZINES">MAGAZINES</option>
+                <option value="DAIRY">DAIRY</option>
+                <option value="SEAFOOD">SEAFOOD</option>
+                <option value="LIQUOR">LIQUOR</option>
+                <option value="WINE">WINE</option>
+                <option value="BEER">BEER</option>
+                <option value="HOME AND KITCHEN I">HOME AND KITCHEN I</option>
+                <option value="DELI">DELI</option>
+                <option value="PLAYERS AND ELECTRONICS">PLAYERS AND ELECTRONICS</option>
+                <option value="POULTRY">POULTRY</option>
+                <option value="FROZEN FOODS">FROZEN FOODS</option>
+                <option value="SCHOOL AND OFFICE SUPPLIES">SCHOOL AND OFFICE SUPPLIES</option>
+                <option value="PERSONAL CARE">PERSONAL CARE</option>
+                <option value="CLEANING">CLEANING</option>
+                <option value="HARDWARE">HARDWARE</option>
+                <option value="PET SUPPLIES">PET SUPPLIES</option>
+                <option value="BEAUTY">BEAUTY</option>
+                <option value="EGGS">EGGS</option>
+                <option value="HOME APPLIANCES">HOME APPLIANCES</option>
+                <option value="MEATS">MEATS</option>
+            </select>
+
+            <label>On Promotion (0 hoặc 1):</label>
+            <input type="number" name="onpromotion">
+
+            <label>City:</label>
+            <select name="City" required>
+                <option value="Quevedo">Quevedo</option>
+                <option value="Cuenca">Cuenca</option>
+                <option value="Guaranda">Guaranda</option>
+                <option value="Santo Domingo">Santo Domingo</option>
+                <option value="Playas">Playas</option>
+                <option value="Puyo">Puyo</option>
+                <option value="Quito">Quito</option>
+                <option value="Manta">Manta</option>
+                <option value="Latacunga">Latacunga</option>
+                <option value="Guayaquil">Guayaquil</option>
+                <option value="Loja">Loja</option>
+                <option value="Ibarra">Ibarra</option>
+                <option value="El Carmen">El Carmen</option>
+                <option value="Ambato">Ambato</option>
+                <option value="Machala">Machala</option>
+                <option value="Daule">Daule</option>
+                <option value="Cayambe">Cayambe</option>
+                <option value="Salinas">Salinas</option>
+                <option value="Libertad">Libertad</option>
+                <option value="Babahoyo">Babahoyo</option>
+                <option value="Riobamba">Riobamba</option>
+                <option value="Esmeraldas">Esmeraldas</option>
+            </select>
+
+            <label>State:</label>
+             <select name="State" required>
+                <option value="Manabi">Manabi</option>
+                <option value="Cotopaxi">Cotopaxi</option>
+                <option value="Pichincha">Pichincha</option>
+                <option value="Chimborazo">Chimborazo</option>
+                <option value="Loja">Loja</option>
+                <option value="Guayas">Guayas</option>
+                <option value="Santa Elena">Santa Elena</option>
+                <option value="Imbabura">Imbabura</option>
+                <option value="El Oro">El Oro</option>
+                <option value="Azuay">Azuay</option>
+                <option value="Bolivar">Bolivar</option>
+                <option value="Tungurahua">Tungurahua</option>
+                <option value="Pastaza">Pastaza</option>
+                <option value="Santo Domingo de los Tsachilas">Santo Domingo de los Tsachilas</option>
+                <option value="Los Rios">Los Rios</option>
+                <option value="Esmeraldas">Esmeraldas</option>
+            </select>
+
+            <label>Type X:</label>
+            <select name="Type X" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+            </select>
+
+            <label>Cluster:</label>
+            <input type="number" name="cluster">
+
+            <label>Transaction:</label>
+            <input type="number" name="transaction">
+
+
+            <label>Chọn mô hình:</label>
+            <select name="model" required>
+                <option value="LSTM">LSTM</option>
+                <option value="TCN">TCN</option>
+                <option value="Transformer">Transformer</option>
+            </select>
+
+            <input type="submit" value="Dự đoán Sales">
+        </form>
+
+        {% if sales is not none %}
+            <div class="result">
+                Sales dự đoán: <strong>{{ sales }}</strong>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
